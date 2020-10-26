@@ -60,7 +60,7 @@ var shapes = {
     [0, 0, 0],
   ],
 };
-
+var isStop = false;
 //Block colors
 var colors = [
   "F92338",
@@ -84,7 +84,7 @@ var upcomingShape;
 var bag = [];
 //index for shapes in the bag
 var bagIndex = 0;
-
+var isStart = false;
 //GAME VALUES
 //Game score
 var score = 0;
@@ -134,19 +134,39 @@ var mutationRate = 0.05;
 //helps calculate mutation
 var mutationStep = 0.2;
 
+document.onLoad = initialize();
+
+var interval;
+
 //main function, called on load
 function initialize() {
+  var temp = document.getElementById("start");
+  temp.innerHTML = "<center><h1>press 'spacebar' to start</h1></center>";
+}
+
+function deletePress() {
+  var temp = document.getElementById("start");
+  temp.innerHTML = "";
+}
+
+function init() {
   //init pop size
+
   archive.populationSize = populationSize;
+
   //get the next available shape from the bag
   nextShape();
   //applies the shape to the grid
   applyShape();
   //set both save state and current state from the game
+
   saveState = getState();
   roundState = getState();
+
   //create an initial population of genomes
+
   createInitialPopulation();
+
   //the game loop
   var loop = function () {
     //boolean for changing game speed
@@ -168,6 +188,7 @@ function initialize() {
       update();
     } else {
       //draw the elements
+
       draw = true;
     }
     //update regardless
@@ -180,19 +201,41 @@ function initialize() {
     }
   };
   //timer interval
-  var interval = setInterval(loop, speed);
+
+  interval = setInterval(loop, speed);
 }
-document.onLoad = initialize();
+
+function stop() {
+  if (!isStop) {
+    clearInterval(interval);
+  } else {
+    reset();
+    initialize();
+  }
+}
 
 //key options
 window.onkeydown = function (event) {
   var characterPressed = String.fromCharCode(event.keyCode);
+
   if (event.keyCode == 38) {
     rotateShape();
   } else if (event.keyCode == 40) {
     moveDown();
   } else if (event.keyCode == 37) {
     moveLeft();
+  } else if (event.keyCode == 32) {
+    console.log("hello");
+    if (!isStart) {
+      deletePress();
+      init();
+    }
+    isStart = true;
+  } else if (characterPressed.toUpperCase() === "T") {
+    console.log("hello");
+    isStop = !isStop;
+    console.log(isStop);
+    reset();
   } else if (event.keyCode == 39) {
     moveRight();
   } else if (shapes[characterPressed.toUpperCase()] !== undefined) {
@@ -829,6 +872,7 @@ function generateBag() {
 /**
  * Resets the game.
  */
+
 function reset() {
   score = 0;
   grid = [
@@ -956,6 +1000,9 @@ function output() {
 function updateScore() {
   if (draw) {
     var scoreDetails = document.getElementById("score");
+    var scoreBar = document.getElementById("scoreBar");
+    var temp = "<h2>Score: " + score + "</h2>";
+
     var html = "<h2>&nbsp;</h2><h2>Score: " + score + "</h2>";
     html +=
       "<b>Upcoming Tetromino.</b><br><br><div style='border:5px solid blue; width:25%'>";
@@ -981,6 +1028,7 @@ function updateScore() {
     }
     html += "</div><br />Speed: " + speed + " ms/ticks";
     if (ai) {
+      temp += "(Play by Ai)";
       html += "<br />Generation: " + generation;
       html += "<br />Individual: " + (currentGenome + 1) + "/" + populationSize;
     }
@@ -996,6 +1044,8 @@ function updateScore() {
     html += "<br><br>Press '[E]' adjust speed";
     html += "<br>Press '[R]' to load generation.json";
     html += "<br>Press '[G]' to save to get this generation weights";
+    html += "<br>Press '[T]' to restart";
+    scoreBar.innerHTML = temp;
     scoreDetails.innerHTML = html;
   }
 }
@@ -1172,6 +1222,7 @@ function getHeight() {
  * @param  {String} archiveString The stringified archive.
  */
 function loadArchive(archiveString) {
+  console.log(archiveString);
   archive = JSON.parse(archiveString);
   genomes = clone(archive.genomes);
   populationSize = archive.populationSize;

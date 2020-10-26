@@ -9,8 +9,50 @@
 
     <style>
       body {
-        background-color:  black;
+        background-color: black;
       }
+
+      @media only screen and (min-width: 400px) {
+        /* For desktop: */
+        .smallCenter {
+          margin-left: 20px;
+        }
+        .notDisappear {
+          display: inline;
+          margin-bottom: 10px;
+        }
+        .disappear {
+          display: none;
+        }
+        .center {
+          text-align: center;
+
+          margin-left: 25%;
+          margin-right: 25%;
+          background-color: darkblue;
+          border: 10px solid blue;
+        }
+      }
+      @media only screen and (min-width: 800px) {
+        /* For desktop: */
+        .smallCenter {
+        }
+        .notDisappear {
+          display: none;
+        }
+        .disappear {
+          display: block !important;
+        }
+        .center {
+          text-align: center;
+
+          margin-left: 30%;
+          margin-right: 30%;
+          background-color: darkblue;
+          border: 10px solid blue;
+        }
+      }
+
       .whiteText {
         color: white;
         font-family: "VT323", monospace;
@@ -18,7 +60,7 @@
       }
       .blackText {
         color: black;
-        font-family:  "VT323", monospace;
+        font-family: "VT323", monospace;
         font-size: 26px;
       }
       #output {
@@ -29,14 +71,7 @@
       #score {
         padding-left: 55%;
       }
-      .center {
-        text-align: center;
-        width: 25%;
-        margin-left: auto;
-        margin-right: auto;
-        background-color: darkblue;
-        border: 10px solid blue;
-      }
+
       .headerText {
         font-size: 72px;
       }
@@ -69,16 +104,20 @@
     ></script>
   </head>
   <body>
-    <h1 class="whiteText center headerText">
+    
+    <h1 class="whiteText center headerText disappear">
       <div class="tetrisFont">
         <span id="t">T</span><span id="e">E</span><span id="tY">T</span
         ><span id="r">R</span><span id="i">I</span><span id="s">S</span>
       </div>
     </h1>
-    <div id="box"><div id="output" class="whiteText"></div></div>
-
-    <div id="score" class="whiteText"></div>
-    <script src="./tetnet.js"></script>
+     <h1 id="start" class="whiteText"></h1>
+   
+    
+    <center><div id="scoreBar" class="whiteText notDisappear"></div></center>
+    <div id="box"><div id="output" class="whiteText smallCenter"></div></div>
+    <div id="score" class="whiteText disappear"></div>
+    <script src="./AI.js"></script>
     <script type="text/javascript"></script>
   </body>
 </html>
