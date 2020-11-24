@@ -657,10 +657,6 @@ function update() {
   updateScore();
 }
 
-/**
- * Moves the current shape down if possible.
- * @return {Object} The results of the movement of the piece.
- */
 function moveDown() {
   //array of possibilities
   var result = { lose: false, moved: true, rowsCleared: 0 };
@@ -873,6 +869,7 @@ function generateBag() {
  * Resets the game.
  */
 
+//OUR CODE START HERE
 function reset() {
   score = 0;
   grid = [
@@ -902,12 +899,6 @@ function reset() {
   nextShape();
 }
 
-/**
- * Determines if the given grid and shape collide with one another.
- * @param  {Grid} scene  The grid to check.
- * @param  {Shape} object The shape to check.
- * @return {Boolean} Whether the shape and grid collide.
- */
 function collides(scene, object) {
   //for the size of the shape (row x column)
   for (var row = 0; row < object.shape.length; row++) {
@@ -997,6 +988,8 @@ function output() {
 /**
  * Updates the side information.
  */
+
+//OUR CODE START HERE
 function updateScore() {
   if (draw) {
     var scoreDetails = document.getElementById("score");
@@ -1050,10 +1043,6 @@ function updateScore() {
   }
 }
 
-/**
- * Returns the current game state in an object.
- * @return {State} The current game state.
- */
 function getState() {
   var state = {
     grid: clone(grid),
@@ -1067,10 +1056,6 @@ function getState() {
   return state;
 }
 
-/**
- * Loads the game state from the given state object.
- * @param  {State} state The state to load.
- */
 function loadState(state) {
   grid = clone(state.grid);
   currentShape = clone(state.currentShape);
@@ -1221,6 +1206,8 @@ function getHeight() {
  * Loads the archive given.
  * @param  {String} archiveString The stringified archive.
  */
+
+//LOAD GENERATION
 function loadArchive(archiveString) {
   console.log(archiveString);
   archive = JSON.parse(archiveString);
@@ -1233,29 +1220,14 @@ function loadArchive(archiveString) {
   console.log("Archive loaded!");
 }
 
-/**
- * Clones an object.
- * @param  {Object} obj The object to clone.
- * @return {Object}     The cloned object.
- */
 function clone(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
 
-/**
- * Returns a random property from the given object.
- * @param  {Object} obj The object to select a property from.
- * @return {Property}     A random property.
- */
 function randomProperty(obj) {
   return obj[randomKey(obj)];
 }
 
-/**
- * Returns a random property key from the given object.
- * @param  {Object} obj The object to select a property key from.
- * @return {Property}     A random property key.
- */
 function randomKey(obj) {
   var keys = Object.keys(obj);
   var i = seededRandom(0, keys.length);
@@ -1266,12 +1238,6 @@ function replaceAll(target, search, replacement) {
   return target.replace(new RegExp(search, "g"), replacement);
 }
 
-/**
- * Returns a random number that is determined from a seeded random number generator.
- * @param  {Number} min The minimum number, inclusive.
- * @param  {Number} max The maximum number, exclusive.
- * @return {Number}     The generated random number.
- */
 function seededRandom(min, max) {
   max = max || 1;
   min = min || 0;
