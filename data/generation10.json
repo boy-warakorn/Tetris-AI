@@ -1,0 +1,85 @@
+{
+  "populationSize": 50,
+  "currentGeneration": 10,
+  "elites": [
+    {
+      "id": 0.5200378714318401,
+      "rowsCleared": 0.1332554627289364,
+      "weightedHeight": -0.45431301903224197,
+      "cumulativeHeight": -0.4743131775246747,
+      "relativeHeight": -0.15354355165603395,
+      "holes": 0.06670775916937555,
+      "roughness": -0.26253351272955006,
+      "fitness": 9172
+    },
+    {
+      "id": 0.24365911979979216,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.33802148768397444,
+      "cumulativeHeight": -0.47171363794290344,
+      "relativeHeight": 0.14085702311202386,
+      "holes": 0.060309733788964426,
+      "roughness": -0.12613830956365302,
+      "fitness": 43580
+    },
+    {
+      "id": 0.37941575944263106,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.1398248274799696,
+      "cumulativeHeight": -0.6387632029985606,
+      "relativeHeight": 0.14085702311202386,
+      "holes": 0.060309733788964426,
+      "roughness": -0.12613830956365302,
+      "fitness": 61472
+    },
+    {
+      "id": 0.37941575944263106,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.1398248274799696,
+      "cumulativeHeight": -0.6387632029985606,
+      "relativeHeight": 0.14085702311202386,
+      "holes": 0.060309733,
+      "fitness": -1
+    },
+    {
+      "id": 0.9107509363954489,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.19255183690504274,
+      "cumulativeHeight": -0.6387632029985606,
+      "relativeHeight": 0.14085702311202386,
+      "holes": -0.12636998147386633,
+      "roughness": -0.047506953408001706,
+      "fitness": -1
+    },
+    {
+      "id": 0.5834760647860346,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.0999539008139354,
+      "cumulativeHeight": -0.8364728800867647,
+      "relativeHeight": 0.14085702311202386,
+      "holes": -0.12636998147386633,
+      "roughness": -0.047506953408001706,
+      "fitness": -1
+    },
+    {
+      "id": 0.7306541348014748,
+      "rowsCleared": 0.1332554627289364,
+      "weightedHeight": -0.0999539008139354,
+      "cumulativeHeight": -0.6387632029985606,
+      "relativeHeight": 0.14085702311202386,
+      "holes": 0.060309733788964426,
+      "roughness": -0.047506953408001706,
+      "fitness": -1
+    },
+    {
+      "id": 0.7865119061083146,
+      "rowsCleared": -0.090041308479204,
+      "weightedHeight": -0.0999539008139354,
+      "cumulativeHeight": -0.49507336843224836,
+      "relativeHeight": 0.14085702311202386,
+      "holes": 0.060309733788964426,
+      "roughness": -0.12613830956365302,
+      "fitness": -1
+    }
+  ]
+}
